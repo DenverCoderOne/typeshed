@@ -5,7 +5,6 @@ from typing_extensions import Literal
 
 from babel.core import Locale
 
-long = int
 LC_NUMERIC: str | None
 
 class UnknownCurrencyError(Exception):
@@ -58,6 +57,14 @@ def format_currency(
     format_type: Literal["name", "standard", "accounting"] = ...,
     decimal_quantization: bool = ...,
     group_separator: bool = ...,
+) -> str: ...
+def format_compact_currency(
+    number: float,
+    currency: str,
+    *,
+    format_type: Literal["short"] = ...,
+    locale: Locale | str | None = ...,
+    fraction_digits: int = ...
 ) -> str: ...
 def format_percent(
     number: float | decimal.Decimal | str,
